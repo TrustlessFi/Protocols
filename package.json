@@ -1,0 +1,11 @@
+{
+  "name": "@trustlessfi/protocolaccess",
+  "packageManager": "yarn@3.0.2",
+  "version": "0.0.1",
+  "description": "Gets the fully typed deployment of all contracts of a Trustless Protocol.",
+  "repository": "https://github.com/TrustlessFi/ProtocolAccess",
+  "author": "TrustlessOfficial <TrustlessFi@protonmail.com>",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts"
+}
