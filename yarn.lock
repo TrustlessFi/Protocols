@@ -3,9 +3,36 @@
 
 __metadata:
   version: 4
+  cacheKey: 8
+
+"@trustlessfi/addresses@npm:^0.3.3":
+  version: 0.3.3
+  resolution: "@trustlessfi/addresses@npm:0.3.3"
+  dependencies:
+    "@types/node": ^16.11.6
+  checksum: 59fc03fb3c054a8d79cdd89ac5f014befeb1efb97dcb55ee50039bab53f0e3c6a8af36de76241941a1b0e859605b980ba40e29d30600de548cd8e5f7122a0862
+  languageName: node
+  linkType: hard
 
 "@trustlessfi/protocolaccess@workspace:.":
   version: 0.0.0-use.local
   resolution: "@trustlessfi/protocolaccess@workspace:."
+  dependencies:
+    "@trustlessfi/addresses": ^0.3.3
+    "@trustlessfi/typechain": ^0.4.0
   languageName: unknown
   linkType: soft
+
+"@trustlessfi/typechain@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "@trustlessfi/typechain@npm:0.4.0"
+  checksum: 63ad4ff68630588d1f522834c4d54230d3649a09474ffb3dd22539fb88812d76f075185911ea8e5b2cb86253350eb1bd436cc344e8b661ef806acb60acefcc8e
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^16.11.6":
+  version: 16.11.6
+  resolution: "@types/node@npm:16.11.6"
+  checksum: 6e19634766ff589d3d2f361c2196b671f8f133cdadc5ad347a621c360d8994b6c4fbccfb2ad9c60c588c593831a96497c9c6b77d2b7e91be723384b94f6368e7
+  languageName: node
+  linkType: hard
