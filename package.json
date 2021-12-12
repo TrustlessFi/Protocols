@@ -9,7 +9,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@trustlessfi/addresses": "^0.4.7",
-    "@trustlessfi/typechain": "^0.6.8"
+    "@trustlessfi/addresses": "^0.4.10",
+    "@trustlessfi/typechain": "^0.6.10",
+    "hardhat": "^2.7.1"
   }
 }
