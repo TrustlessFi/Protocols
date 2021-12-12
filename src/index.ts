@@ -1,8 +1,6 @@
 // Copyright (c) 2020-2022. All Rights Reserved
 // SPDX-License-Identifier: UNLICENSED
-import hre from "hardhat"
-const e = hre.ethers
-
+import hre, { ethers } from 'hardhat'
 
 import {
   Accounting,
@@ -38,8 +36,10 @@ import {
 import {
   TDaoGovernorAlpha,
   TDao,
+  TDaoToken,
   TDaoPositionNFT,
-  TDaoPositionNFTDescriptor
+  TDaoPositionNFTDescriptor,
+  TDaoVotingRewardsSafe,
 } from '@trustlessfi/typechain'
 
 // ================ AUXILIARY  =================
@@ -98,13 +98,24 @@ export interface tcpProtocol {
   },
 }
 
+export interface tdaoProtocol {
+  tdao: TDao
+  votingRewardsSafe: TDaoVotingRewardsSafe
+  tDaoToken: ProtocolToken
+  tDaoPositionNFT: TDaoPositionNFT
+  tDaoPositionNFTDescriptor: TDaoPositionNFTDescriptor
+  tDaoGovernorAlpha: TDaoGovernorAlpha
+  tDaoTimelock: TDaoTimelock
+  incentiveContractAddress: string
+}
+
+const get = async(name: string, address: string) => (await ethers.getContractFactory(name)).attach(address)
+
 export const getDeployedTcp = async(
   seedAddresses: null | chainAddresses = null,
 ): Promise<tcpProtocol> => {
   const chainID = hre.network.config.chainId
   if (chainID === undefined) throw new Error('ChainID not found')
-
-  const get = async(name: string, address: string) => (await e.getContractFactory(name)).attach(address)
 
   const governorAddress = seedAddresses === null
     ? getAddress(chainID, 'TCP', 'Governor')
@@ -197,7 +208,7 @@ export const getDeployedTcp = async(
     await (prices as Prices).collateralPool(),
     await (prices as Prices).protocolPool(),
     await (rates as Rates).getReferencePools(),
-    await e.getContractFactory('UniswapV3Pool'),
+    await ethers.getContractFactory('UniswapV3Pool'),
   ]);
 
   const wrapPool = (address: string): UniswapV3Pool => UniswapV3PoolFactory.attach(address) as unknown as UniswapV3Pool
@@ -242,5 +253,56 @@ export const getDeployedTcp = async(
       nftPositionManager,
       ethPriceProvider,
     },
+  }
+}
+
+
+export const getDeployedTdao = async(
+  seedAddresses: null | chainAddresses = null,
+): Promise<tdaoProtocol> => {
+  const chainID = hre.network.config.chainId
+  if (chainID === undefined) throw new Error('ChainID not found')
+
+  const tdaoAddress = seedAddresses === null
+    ? getAddress(chainID, 'TDAO', 'TDao')
+    : seedAddresses.TDAO.TDao
+
+  const [
+    tdao,
+  ] = await Promise.all([
+    await get('TDao', tdaoAddress) as unknown as TDao,
+  ])
+
+  const [
+    incentiveContractAddress,
+    votingRewardsSafe,
+    tDaoToken,
+    tDaoPositionNFT,
+    tDaoGovernorAlpha,
+    tDaoTimelock,
+  ] = await Promise.all([
+    await tdao.incentiveContract(),
+    await get('TDaoVotingRewardsSafe', await tdao.votingRewardsSafe()) as unknown as TDaoVotingRewardsSafe,
+    await get('TDaoToken', await tdao.tDaoToken()) as unknown as TDaoToken,
+    await get('TDaoPositionNFT', await tdao.tDaoPositionNFT()) as unknown as TDaoPositionNFT,
+    await get('TDaoGovernorAlpha', await tdao.tDaoGovernorAlpha()) as unknown as TDaoGovernorAlpha,
+    await get('TDaoTimelock', await tdao.timelock()) as unknown as TDaoTimelock,
+  ])
+
+  const [
+    tDaoPositionNFTDescriptor,
+  ] = await Promise.all([
+    await get('tDaoPositionNFTDescriptor', await tDaoPositionNFT.descriptor()) as unknown as TDaoPositionNFTDescriptor,
+  ])
+
+  return {
+    tdao,
+    votingRewardsSafe,
+    tDaoToken,
+    tDaoPositionNFT,
+    tDaoPositionNFTDescriptor,
+    tDaoGovernorAlpha,
+    tDaoTimelock,
+    incentiveContractAddress,
   }
 }
