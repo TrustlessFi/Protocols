@@ -231,7 +231,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ethersproject/providers@npm:5.5.1":
+"@ethersproject/providers@npm:5.5.1, @ethersproject/providers@npm:^5.5.0":
   version: 5.5.1
   resolution: "@ethersproject/providers@npm:5.5.1"
   dependencies:
@@ -405,13 +405,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@trustlessfi/addresses@npm:^0.3.3":
-  version: 0.3.8
-  resolution: "@trustlessfi/addresses@npm:0.3.8"
+"@trustlessfi/addresses@npm:^0.4.7":
+  version: 0.4.7
+  resolution: "@trustlessfi/addresses@npm:0.4.7"
   dependencies:
-    "@trustlessfi/utils": ^0.2.4
-    "@types/node": ^16.11.7
-  checksum: 872f8a0838965b710e83f0e8ed093b275ccca45f62faa6f552cd0cde8b1b46a2a28f67c7bed63c87be1301859d5d6303da80b9480c5007166dd4a251e66cdb76
+    "@trustlessfi/utils": ^0.2.8
+    "@types/node": ^16.11.11
+  checksum: dde22dc48e44adb30d5983b10ea6de487d51869149ddd2ab564f9e6d998475c8c9d225b8922ecc4e9ba98f28837338bacea50adeccb09cbc0b4ac37fec1b9b0c
   languageName: node
   linkType: hard
 
@@ -419,19 +419,23 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@trustlessfi/protocolaccess@workspace:."
   dependencies:
-    "@trustlessfi/addresses": ^0.3.3
-    "@trustlessfi/typechain": ^0.4.0
+    "@trustlessfi/addresses": ^0.4.7
+    "@trustlessfi/typechain": ^0.6.8
   languageName: unknown
   linkType: soft
 
-"@trustlessfi/typechain@npm:^0.4.0":
-  version: 0.4.1
-  resolution: "@trustlessfi/typechain@npm:0.4.1"
-  checksum: 87f47038445eb56c391200957c7aea2d04920e3f4fb0e5b748ba16498863279959c7104b5f228c20ed89595edd3d52c6ea76fabc4c9c73acb08aedadb2b0b423
+"@trustlessfi/typechain@npm:^0.6.8":
+  version: 0.6.8
+  resolution: "@trustlessfi/typechain@npm:0.6.8"
+  dependencies:
+    "@ethersproject/abi": ^5.5.0
+    "@ethersproject/providers": ^5.5.0
+    ethers: ^5.5.1
+  checksum: 1475ad4fec701e7c784bf52b03a8af7482449b3a03b1a56de92072aa161fea8f0ca58735f5962f540943d9aa9d9b1ffe6a1811ae7d808b9b744e32b591fd9d22
   languageName: node
   linkType: hard
 
-"@trustlessfi/utils@npm:^0.2.4":
+"@trustlessfi/utils@npm:^0.2.8":
   version: 0.2.8
   resolution: "@trustlessfi/utils@npm:0.2.8"
   dependencies:
@@ -440,7 +444,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^16.11.7":
+"@types/node@npm:^16.11.11":
   version: 16.11.12
   resolution: "@types/node@npm:16.11.12"
   checksum: a3feb346d61a56f5a137c29bb8c63cfa3cc02e184b9dffdc18ef1528dcce55596e570575215a2e39e6ce69343eeb2a5ba71c271938f1dc8db4cc393902855412
@@ -490,7 +494,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ethers@npm:^5.4.7":
+"ethers@npm:^5.4.7, ethers@npm:^5.5.1":
   version: 5.5.2
   resolution: "ethers@npm:5.5.2"
   dependencies:
