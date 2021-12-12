@@ -1,6 +1,6 @@
 // Copyright (c) 2020-2022. All Rights Reserved
 // SPDX-License-Identifier: UNLICENSED
-import hre, { ethers } from 'hardhat'
+import hre from 'hardhat'
 
 import {
   Accounting,
@@ -51,7 +51,6 @@ import {
 
 // ================ OTHER CONTRACTS =================
 import {
-  ERC20,
   WETH9,
   ProtocolDataAggregator,
   IPriceProvider,
@@ -109,7 +108,7 @@ export interface tdaoProtocol {
   incentiveContractAddress: string
 }
 
-const get = async(name: string, address: string) => (await ethers.getContractFactory(name)).attach(address)
+const get = async(name: string, address: string) => (await (hre as any).ethers.getContractFactory(name)).attach(address)
 
 export const getDeployedTcp = async(
   seedAddresses: null | chainAddresses = null,
@@ -133,7 +132,6 @@ export const getDeployedTcp = async(
   const positionManagerAddress = seedAddresses === null
     ? getAddress(chainID, 'Uniswap', 'positionManager')
     : seedAddresses.Uniswap.positionManager
-
 
   const [
     governor,
@@ -170,7 +168,7 @@ export const getDeployedTcp = async(
     settlement,
     tcpTimelock,
   ] = await Promise.all([
-    await get('TcpAllocation', await governor.governorAlpha()) as unknown as TcpAllocation,
+    await get('TcpAllocation', await governor.tcpAllocation()) as unknown as TcpAllocation,
     await get('TcpGovernorAlpha', await governor.governorAlpha()) as unknown as TcpGovernorAlpha,
     await get('WETH9', await nftPositionManager.WETH9()) as unknown as WETH9,
     await get('UniswapV3Factory', await router.factory()) as unknown as UniswapV3Factory,
@@ -196,7 +194,7 @@ export const getDeployedTcp = async(
     ethPriceProvider,
   ] = await Promise.all([
     await get('IncentiveAllocation', await tcpAllocation.incentiveAllocation()) as unknown as IncentiveAllocation,
-    await get('IPriceProvider', await settlement.ethPriceProvider()) as unknown as IPriceProvider
+    await (hre as any).ethers.getContractAt('IPriceProvider', await settlement.ethPriceProvider()) as unknown as IPriceProvider
   ])
 
   let [
@@ -208,7 +206,7 @@ export const getDeployedTcp = async(
     await (prices as Prices).collateralPool(),
     await (prices as Prices).protocolPool(),
     await (rates as Rates).getReferencePools(),
-    await ethers.getContractFactory('UniswapV3Pool'),
+    await (hre as any).ethers.getContractFactory('UniswapV3Pool'),
   ]);
 
   const wrapPool = (address: string): UniswapV3Pool => UniswapV3PoolFactory.attach(address) as unknown as UniswapV3Pool
@@ -257,7 +255,7 @@ export const getDeployedTcp = async(
 }
 
 
-export const getDeployedTdao = async(
+export const getDeployedTDao = async(
   seedAddresses: null | chainAddresses = null,
 ): Promise<tdaoProtocol> => {
   const chainID = hre.network.config.chainId
@@ -292,7 +290,7 @@ export const getDeployedTdao = async(
   const [
     tDaoPositionNFTDescriptor,
   ] = await Promise.all([
-    await get('tDaoPositionNFTDescriptor', await tDaoPositionNFT.descriptor()) as unknown as TDaoPositionNFTDescriptor,
+    await get('TDaoPositionNFTDescriptor', await tDaoPositionNFT.descriptor()) as unknown as TDaoPositionNFTDescriptor,
   ])
 
   return {
