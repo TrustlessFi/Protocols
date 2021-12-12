@@ -1,6 +1,6 @@
 {
   "name": "@trustlessfi/protocolaccess",
-  "packageManager": "yarn@3.0.2",
+  "packageManager": "yarn@3.1.1",
   "version": "0.0.1",
   "description": "Gets the fully typed deployment of all contracts of a Trustless Protocol.",
   "repository": "https://github.com/TrustlessFi/ProtocolAccess",
