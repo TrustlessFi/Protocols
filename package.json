@@ -1,9 +1,9 @@
 {
-  "name": "@trustlessfi/protocol",
+  "name": "@trustlessfi/protocols",
   "packageManager": "yarn@3.1.1",
-  "version": "0.0.13",
-  "description": "Gets the fully typed deployment of all contracts of a Trustless Protocol.",
-  "repository": "https://github.com/TrustlessFi/Protocol",
+  "version": "0.1.0",
+  "description": "Functions to fetch fully typed representations of all Trustless protocols from the chains they are deployed to. This is first step for building tools on Trustless.",
+  "repository": "https://github.com/TrustlessFi/Protocols",
   "author": "TrustlessOfficial <TrustlessFi@protonmail.com>",
   "license": "MIT",
   "main": "dist/index.js",

@@ -842,9 +842,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@trustlessfi/protocol@workspace:.":
+"@trustlessfi/protocols@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@trustlessfi/protocol@workspace:."
+  resolution: "@trustlessfi/protocols@workspace:."
   dependencies:
     "@nomiclabs/hardhat-ethers": ^2.0.3
     "@nomiclabs/hardhat-waffle": ^2.0.1
