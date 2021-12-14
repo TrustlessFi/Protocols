@@ -831,16 +831,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@trustlessfi/addresses@npm:^0.4.13":
-  version: 0.4.13
-  resolution: "@trustlessfi/addresses@npm:0.4.13"
+"@trustlessfi/addresses@npm:^0.4.14":
+  version: 0.4.14
+  resolution: "@trustlessfi/addresses@npm:0.4.14"
   dependencies:
     "@trustlessfi/utils": ^0.2.8
     "@types/node": ^16.11.11
-    hardhat: ^2.7.1
-    ts-node: ^10.4.0
     typescript: ^4.5.3
-  checksum: 8bafd15f4ce0555f04eb63b6fadb844adbdee48e31dfe033137513911b74768052a2bf46e7f899b4f93fcb1ec74e8e0fe0f4672b5afd20510ca6d004660407e8
+  checksum: 2d1ea6d6963ec707ac348397b46783751bb9c09582d5f0b499de8fe6e2061353a5eaf9d8ad47caf46e9b370851c86274c94dbc9a1c6984d010e0b90d662f7c85
   languageName: node
   linkType: hard
 
@@ -850,8 +848,8 @@ __metadata:
   dependencies:
     "@nomiclabs/hardhat-ethers": ^2.0.3
     "@nomiclabs/hardhat-waffle": ^2.0.1
-    "@trustlessfi/addresses": ^0.4.13
-    "@trustlessfi/typechain": ^0.6.10
+    "@trustlessfi/addresses": ^0.4.14
+    "@trustlessfi/typechain": ^0.6.14
     "@typechain/ethers-v5": ^8.0.5
     chai: ^4.3.4
     ethereum-waffle: ^3.4.0
@@ -862,14 +860,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@trustlessfi/typechain@npm:^0.6.10":
-  version: 0.6.10
-  resolution: "@trustlessfi/typechain@npm:0.6.10"
+"@trustlessfi/typechain@npm:^0.6.14":
+  version: 0.6.14
+  resolution: "@trustlessfi/typechain@npm:0.6.14"
   dependencies:
     "@ethersproject/abi": ^5.5.0
     "@ethersproject/providers": ^5.5.0
     ethers: ^5.5.1
-  checksum: 0b6a79440080c410799f6134e880cf5b64dee6d228d748818c954d3600ae3dcd0d66e995b9622046b8a3fad8732a33413d42215137cd071d57dc1e27ae31977f
+  checksum: 9e8b9ddf3c4bfdd778f592c38c1553065e3494ecbeaaa6250a51524d4ad45cae138e3b9fde4043bac7e88a0e73b1867818629195a588bdcae10fd40b1bd222ff
   languageName: node
   linkType: hard
 
@@ -5066,7 +5064,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hardhat@npm:2.7.1, hardhat@npm:^2.7.1":
+"hardhat@npm:2.7.1":
   version: 2.7.1
   resolution: "hardhat@npm:2.7.1"
   dependencies:
