@@ -11,4 +11,4 @@
 
 
 *.swp
-
+.DS_Store
