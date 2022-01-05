@@ -849,7 +849,7 @@ __metadata:
     "@nomiclabs/hardhat-ethers": ^2.0.3
     "@nomiclabs/hardhat-waffle": ^2.0.1
     "@trustlessfi/addresses": ^0.4.14
-    "@trustlessfi/typechain": ^0.6.32
+    "@trustlessfi/typechain": ^0.6.33
     "@typechain/ethers-v5": ^8.0.5
     chai: ^4.3.4
     ethereum-waffle: ^3.4.0
@@ -860,14 +860,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@trustlessfi/typechain@npm:^0.6.32":
-  version: 0.6.32
-  resolution: "@trustlessfi/typechain@npm:0.6.32"
+"@trustlessfi/typechain@npm:^0.6.33":
+  version: 0.6.33
+  resolution: "@trustlessfi/typechain@npm:0.6.33"
   dependencies:
     "@ethersproject/abi": ^5.5.0
     "@ethersproject/providers": ^5.5.0
     ethers: ^5.5.1
-  checksum: 3c22231e8d30817fbf6c7597c5c7555dd2d7e43f25c79d35db13445140d9d03cb43f93bfd54a3391476489ac6974e4bbe379b7c2cdca2fa39e0e85e725ba897b
+  checksum: 4508085de10dc1a67db332b5bd1e371efd6f58f937f8472cc64cf0fee0275646ae08a9d44e0db800c81cc63c9fccab9dbc03b1cf2b871a48638d55b7c3330599
   languageName: node
   linkType: hard
 
