@@ -25,20 +25,15 @@ const getDeployedTcp = async (seedAddresses = null) => {
     const routerAddress = seedAddresses === null
         ? (0, addresses_1.getAddress)(chainID, 'Uniswap', 'router')
         : seedAddresses.Uniswap.router;
-    const positionManagerAddress = seedAddresses === null
-        ? (0, addresses_1.getAddress)(chainID, 'Uniswap', 'positionManager')
-        : seedAddresses.Uniswap.positionManager;
-    const [governor, genesisAllocation, protocolDataAggregator, router, nftPositionManager,] = await Promise.all([
+    const [governor, genesisAllocation, protocolDataAggregator, router,] = await Promise.all([
         await get('Governor', governorAddress),
         await get('GenesisAllocation', genesisAllocationAddress),
         await get('ProtocolDataAggregator', dataAggregatorAddress),
-        await get('SwapRouter', routerAddress),
-        await get('NonfungiblePositionManager', positionManagerAddress),
+        await get('SimpleSwapRouter', routerAddress),
     ]);
-    const [tcpAllocation, tcpGovernorAlpha, weth, factory, accounting, auctions, tcp, hue, hueNFT, enforcedDecentralization, lendhue, liquidations, market, prices, protocolLock, rates, rewards, settlement, tcpTimelock,] = await Promise.all([
+    const [tcpAllocation, tcpGovernorAlpha, factory, accounting, auctions, tcp, hue, hueNFT, enforcedDecentralization, lendhue, liquidations, market, prices, protocolLock, rates, rewards, settlement, tcpTimelock,] = await Promise.all([
         await get('TcpAllocation', await governor.tcpAllocation()),
         await get('TcpGovernorAlpha', await governor.governorAlpha()),
-        await get('WETH9', await nftPositionManager.WETH9()),
         await get('UniswapV3Factory', await router.factory()),
         await get('Accounting', await governor.accounting()),
         await get('Auctions', await governor.auctions()),
@@ -56,7 +51,8 @@ const getDeployedTcp = async (seedAddresses = null) => {
         await get('Settlement', await governor.settlement()),
         await get('TcpTimelock', await governor.timelock()),
     ]);
-    const [incentiveAllocation, ethPriceProvider,] = await Promise.all([
+    const [weth, incentiveAllocation, ethPriceProvider,] = await Promise.all([
+        await get('WETH9', await rewards.weth()),
         await get('IncentiveAllocation', await tcpAllocation.incentiveAllocation()),
         await hardhat_1.default.ethers.getContractAt('IPriceProvider', await settlement.ethPriceProvider())
     ]);
@@ -103,7 +99,6 @@ const getDeployedTcp = async (seedAddresses = null) => {
             weth,
             router,
             factory,
-            nftPositionManager,
             ethPriceProvider,
         },
     };

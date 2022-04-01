@@ -1,5 +1,5 @@
 import { Accounting, Auctions, ProtocolToken, Hue, HuePositionNFT, EnforcedDecentralization, Governor, LendHue, Liquidations, Market, Prices, ProtocolLock, Rates, Rewards, Settlement, TDaoTimelock, TcpTimelock, Tcp, TcpGovernorAlpha } from '@trustlessfi/typechain';
-import { SwapRouter, UniswapV3Factory, NonfungiblePositionManager, UniswapV3Pool } from '@trustlessfi/typechain';
+import { SimpleSwapRouter, UniswapV3Factory, UniswapV3Pool } from '@trustlessfi/typechain';
 import { TDaoGovernorAlpha, TDao, TDaoPositionNFT, TDaoPositionNFTDescriptor, TDaoVotingRewardsSafe } from '@trustlessfi/typechain';
 import { TcpAllocation, GenesisAllocation, IncentiveAllocation } from '@trustlessfi/typechain';
 import { WETH9, ProtocolDataAggregator, IPriceProvider } from '@trustlessfi/typechain';
@@ -35,9 +35,8 @@ export interface tcpProtocol {
     };
     external: {
         weth: WETH9;
-        router: SwapRouter;
+        router: SimpleSwapRouter;
         factory: UniswapV3Factory;
-        nftPositionManager: NonfungiblePositionManager;
         ethPriceProvider: IPriceProvider;
     };
 }

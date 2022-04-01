@@ -1,7 +1,7 @@
 {
   "name": "@trustlessfi/protocols",
   "packageManager": "yarn@3.1.1",
-  "version": "0.1.17",
+  "version": "0.2.14",
   "description": "Functions to fetch fully typed representations of all Trustless protocols from the chains they are deployed to. This is first step for building tools on Trustless.",
   "repository": "https://github.com/TrustlessFi/Protocols",
   "author": "TrustlessOfficial <TrustlessFi@protonmail.com>",
@@ -11,8 +11,8 @@
   "dependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.3",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
-    "@trustlessfi/addresses": "^0.4.14",
-    "@trustlessfi/typechain": "^0.6.33",
+    "@trustlessfi/addresses": "^0.6.2",
+    "@trustlessfi/typechain": "^0.8.10",
     "@typechain/ethers-v5": "^8.0.5",
     "chai": "^4.3.4",
     "ethereum-waffle": "^3.4.0",

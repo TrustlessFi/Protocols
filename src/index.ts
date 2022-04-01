@@ -26,10 +26,9 @@ import {
 
 // ================ UNISWAP =================
 import {
-  SwapRouter,
+  SimpleSwapRouter,
   UniswapV3Factory,
-  NonfungiblePositionManager,
-  UniswapV3Pool
+  UniswapV3Pool,
 } from '@trustlessfi/typechain'
 
 // ================ META =================
@@ -78,7 +77,7 @@ export interface tcpProtocol {
   tcpGovernorAlpha: TcpGovernorAlpha
   tcpTimelock: TcpTimelock
   aux: {
-    tcpAllocation: TcpAllocation,
+    tcpAllocation: TcpAllocation
     genesisAllocation: GenesisAllocation
     incentiveAllocation: IncentiveAllocation
     protocolDataAggregator: ProtocolDataAggregator
@@ -90,9 +89,8 @@ export interface tcpProtocol {
   },
   external: {
     weth: WETH9,
-    router: SwapRouter,
+    router: SimpleSwapRouter,
     factory: UniswapV3Factory,
-    nftPositionManager: NonfungiblePositionManager,
     ethPriceProvider: IPriceProvider,
   },
 }
@@ -129,28 +127,22 @@ export const getDeployedTcp = async(
   const routerAddress = seedAddresses === null
     ? getAddress(chainID, 'Uniswap', 'router')
     : seedAddresses.Uniswap.router
-  const positionManagerAddress = seedAddresses === null
-    ? getAddress(chainID, 'Uniswap', 'positionManager')
-    : seedAddresses.Uniswap.positionManager
 
   const [
     governor,
     genesisAllocation,
     protocolDataAggregator,
     router,
-    nftPositionManager,
   ] = await Promise.all([
     await get('Governor', governorAddress) as unknown as Governor,
     await get('GenesisAllocation', genesisAllocationAddress) as unknown as GenesisAllocation,
     await get('ProtocolDataAggregator', dataAggregatorAddress) as unknown as ProtocolDataAggregator,
-    await get('SwapRouter', routerAddress) as unknown as SwapRouter,
-    await get('NonfungiblePositionManager', positionManagerAddress) as unknown as NonfungiblePositionManager,
+    await get('SimpleSwapRouter', routerAddress) as unknown as SimpleSwapRouter,
   ]);
 
   const [
     tcpAllocation,
     tcpGovernorAlpha,
-    weth,
     factory,
     accounting,
     auctions,
@@ -170,7 +162,6 @@ export const getDeployedTcp = async(
   ] = await Promise.all([
     await get('TcpAllocation', await governor.tcpAllocation()) as unknown as TcpAllocation,
     await get('TcpGovernorAlpha', await governor.governorAlpha()) as unknown as TcpGovernorAlpha,
-    await get('WETH9', await nftPositionManager.WETH9()) as unknown as WETH9,
     await get('UniswapV3Factory', await router.factory()) as unknown as UniswapV3Factory,
     await get('Accounting', await governor.accounting()) as unknown as Accounting,
     await get('Auctions', await governor.auctions()) as unknown as Auctions,
@@ -190,9 +181,11 @@ export const getDeployedTcp = async(
   ])
 
   const [
+    weth,
     incentiveAllocation,
     ethPriceProvider,
   ] = await Promise.all([
+    await get('WETH9', await rewards.weth()) as unknown as WETH9,
     await get('IncentiveAllocation', await tcpAllocation.incentiveAllocation()) as unknown as IncentiveAllocation,
     await (hre as any).ethers.getContractAt('IPriceProvider', await settlement.ethPriceProvider()) as unknown as IPriceProvider
   ])
@@ -248,7 +241,6 @@ export const getDeployedTcp = async(
       weth,
       router,
       factory,
-      nftPositionManager,
       ethPriceProvider,
     },
   }

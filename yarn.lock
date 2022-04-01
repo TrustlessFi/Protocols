@@ -831,14 +831,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@trustlessfi/addresses@npm:^0.4.14":
-  version: 0.4.14
-  resolution: "@trustlessfi/addresses@npm:0.4.14"
+"@trustlessfi/addresses@npm:^0.6.2":
+  version: 0.6.2
+  resolution: "@trustlessfi/addresses@npm:0.6.2"
   dependencies:
-    "@trustlessfi/utils": ^0.2.8
     "@types/node": ^16.11.11
     typescript: ^4.5.3
-  checksum: 2d1ea6d6963ec707ac348397b46783751bb9c09582d5f0b499de8fe6e2061353a5eaf9d8ad47caf46e9b370851c86274c94dbc9a1c6984d010e0b90d662f7c85
+  checksum: cfad79f0c9e1c9857079433e99d4ab660dc466887d496b500978d32fb5dc4fbfe8ac355ad44869b3fe0de14d0dd7fa3e4dc94426cdf0a8d59412be9bf4586824
   languageName: node
   linkType: hard
 
@@ -848,8 +847,8 @@ __metadata:
   dependencies:
     "@nomiclabs/hardhat-ethers": ^2.0.3
     "@nomiclabs/hardhat-waffle": ^2.0.1
-    "@trustlessfi/addresses": ^0.4.14
-    "@trustlessfi/typechain": ^0.6.33
+    "@trustlessfi/addresses": ^0.6.2
+    "@trustlessfi/typechain": ^0.8.10
     "@typechain/ethers-v5": ^8.0.5
     chai: ^4.3.4
     ethereum-waffle: ^3.4.0
@@ -860,23 +859,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@trustlessfi/typechain@npm:^0.6.33":
-  version: 0.6.33
-  resolution: "@trustlessfi/typechain@npm:0.6.33"
+"@trustlessfi/typechain@npm:^0.8.10":
+  version: 0.8.10
+  resolution: "@trustlessfi/typechain@npm:0.8.10"
   dependencies:
     "@ethersproject/abi": ^5.5.0
     "@ethersproject/providers": ^5.5.0
     ethers: ^5.5.1
-  checksum: 4508085de10dc1a67db332b5bd1e371efd6f58f937f8472cc64cf0fee0275646ae08a9d44e0db800c81cc63c9fccab9dbc03b1cf2b871a48638d55b7c3330599
-  languageName: node
-  linkType: hard
-
-"@trustlessfi/utils@npm:^0.2.8":
-  version: 0.2.8
-  resolution: "@trustlessfi/utils@npm:0.2.8"
-  dependencies:
-    ethers: ^5.4.7
-  checksum: fac5ee784ebb3f81e565c821da2da278a18947f49fa6bb6d37e07cf0d6e85891317913bf63f33dbb6cecb68b1cb7d5bbbdbfd3c406e289683b738316147b9fdc
+  checksum: 3d435231de9d0af7f18ebf48d141feef7fe05b4e034b7d2487a2c3bb3efbe5b1fcdb7066256b69509a4a5b1d07654aabb7612e8df86bf8766287ce42ed787c73
   languageName: node
   linkType: hard
 
